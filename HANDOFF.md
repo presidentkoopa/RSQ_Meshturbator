@@ -17,6 +17,12 @@
   boxes in that frame (listed in the lump).
 - The licence is in the .glb's own metadata: `author D_U (https://sketchfab.com/DU1701)`, `CC-BY-4.0`.
 
+- **The look (04:45).** The glb has no textures: six material colours, and Sketchfab's live lighting did the
+  rest. Doom lights a model flat, so that lighting is baked once into a texture per part from the mesh's own
+  normals (glb2obj.py --bake: key/fill/rim + a specular term, a cell per triangle, the author's colours lifted
+  from 1% grey to the mid-grey the viewer shows). Nothing painted, nothing invented. Frame: rails, handguard
+  slots, witness stripe, grip texture read. Tone is a shade lighter and cooler than the Sketchfab render.
+
 ## Not done
 - The charging handle pull / bolt lock / fire / eject paths: code written, ran without error in the `load`
   run, NOT yet driven or shown in frames.
