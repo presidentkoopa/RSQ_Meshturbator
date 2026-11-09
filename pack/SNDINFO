@@ -1,0 +1,13 @@
+// RSQ_Meshturbator sounds. PLACEHOLDERS marked.
+mt/m5fire        dspistol          // PLACEHOLDER report: no rifle report among the sources yet
+mt/tail1         sounds/mt/tail/weap_ar_fire_plr_atmo_int1_01.ogg
+mt/tail2         sounds/mt/tail/weap_ar_fire_plr_atmo_int1_02.ogg
+mt/tail3         sounds/mt/tail/weap_ar_fire_plr_atmo_int1_03.ogg
+$random mt/m5tail { mt/tail1 mt/tail2 mt/tail3 }
+mt/brass1        sounds/mt/brass/dsriflc1.ogg
+mt/brass2        sounds/mt/brass/dsriflc2.ogg
+mt/brass3        sounds/mt/brass/dsriflc3.ogg
+$random mt/brass { mt/brass1 mt/brass2 mt/brass3 }
+$limit mt/brass 3
+mt/magland       sounds/mt/brass/chgncas2.wav    // PLACEHOLDER: a magazine landing
+mt/click         dsswtchn                         // PLACEHOLDER: dry fire / detent click

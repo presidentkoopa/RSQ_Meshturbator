@@ -1,0 +1,3 @@
+// RSQ_Meshturbator
+user int mt_grab = 0;		// the grab button on the off controller: 0 trigger, 1 grip
+user bool mt_debug = false;	// MT lines on the console for every state change (the rig reads them)

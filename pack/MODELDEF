@@ -1,0 +1,29 @@
+// RSQ_Meshturbator MODELDEF. Every part is its own Model block bound to one frame of the archetype's sprite
+// (MTARCH `part ... frame X`), once per caller that may draw it: MT_Carrier (on the gun), MT_Hands (in the off
+// hand), MT_DroppedPart (on the floor, world scale). Scale 1 on a HUD layer is one centimetre per model unit
+// (models.cpp scales the controller transform by 0.01); world scale 0.34 is vr_vunits_per_meter / 100 = map
+// units per centimetre. OBJ files are in GZDoom's OBJ space (x forward, y up, z right; the loader negates z).
+// Offsets on the HUD blocks are 0: the parts are authored in the gun's own frame (origin at the grip), and the
+// gun's placement in the hand is the fitting mode's to measure. Skins: the OBJ's usemtl names resolve to the
+// PNGs beside it.
+
+// ---- m5: D_U's Colt M5 SCW (CC-BY, assets/ASSETS.md), models/mt/m5 ----
+Model MT_Carrier { Path "models/mt/m5" Model 0 "body.obj"      Scale 1 1 1 FrameIndex MTP1 A 0 0 }
+Model MT_Carrier { Path "models/mt/m5" Model 0 "mag.obj"       Scale 1 1 1 FrameIndex MTP1 B 0 0 }
+Model MT_Carrier { Path "models/mt/m5" Model 0 "handle.obj"    Scale 1 1 1 FrameIndex MTP1 C 0 0 }
+Model MT_Carrier { Path "models/mt/m5" Model 0 "bolt.obj"      Scale 1 1 1 FrameIndex MTP1 D 0 0 }
+Model MT_Carrier { Path "models/mt/m5" Model 0 "case.obj"      Scale 1 1 1 FrameIndex MTP1 E 0 0 }
+Model MT_Carrier { Path "models/mt/m5" Model 0 "mag_empty.obj" Scale 1 1 1 FrameIndex MTP1 F 0 0 }
+
+Model MT_Hands { Path "models/mt/m5" Model 0 "mag.obj"       Scale 1 1 1 FrameIndex MTP1 B 0 0 }
+Model MT_Hands { Path "models/mt/m5" Model 0 "mag_empty.obj" Scale 1 1 1 FrameIndex MTP1 F 0 0 }
+// the off hand itself, until a hand mesh is sourced: a small box at the controller (frame Z)
+Model MT_Hands { Path "models/mt/box" Model 0 "case.obj" Skin 0 "hand.png" Scale 2 2 2 FrameIndex MTP1 Z 0 0 }
+
+// on the floor: the mesh centred on the actor
+Model MT_DroppedPart { Path "models/mt/m5" Model 0 "mag_world.obj" Scale 0.34 0.34 0.34 FrameIndex MTP1 B 0 0 }
+Model MT_DroppedPart { Path "models/mt/m5" Model 0 "mag_world.obj" Scale 0.34 0.34 0.34 FrameIndex MTP1 F 0 0 }
+
+// the 5.56 case (A) and a live round (B) thrown from the port: D_U's, centred, world scale
+Model MT_Casing { Path "models/mt/m5" Model 0 "case_world.obj"  Scale 0.34 0.34 0.34 USEACTORPITCH USEACTORROLL FrameIndex MTCS A 0 0 }
+Model MT_Casing { Path "models/mt/m5" Model 0 "round_world.obj" Scale 0.34 0.34 0.34 USEACTORPITCH USEACTORROLL FrameIndex MTCS B 0 0 }

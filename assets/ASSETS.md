@@ -14,7 +14,7 @@ polymer, brass, copper, polycarbonate), to be baked to one small palette texture
 
 | folder | source | Blender | reload parts (separate, named) |
 |---|---|---|---|
-| colt-m5-scw | m5 scw.blend | 3.6 | PMAG 30rnd full + empty, 5.56 round, spent case, bolt, charging handle, dust cover, bolt catch L/R, mag catch L/R, selector, trigger; body: upper, lower, grip, stock, handguard, 10.3in barrel, flash hider, iron sights; m4a1 upper/selector variant |
+| colt-m5-scw | m5 scw.blend + low-poly_colt_m5_scw.glb (Sketchfab converted; the one the pack is built from) | 3.6 | PMAG 30rnd full + empty, 5.56 round, spent case, bolt, charging handle, dust cover, bolt catch L/R, mag catch L/R, selector, trigger; body: upper, lower, grip, stock, handguard, 10.3in barrel, flash hider, iron sights; m4a1 upper/selector variant |
 | hk-g36 | hk g36.blend | 3.6 | G36 30rnd mag full + empty, 5.56 round, bolt carrier, bolt head, bolt catch, charging handle, mag release, selector, trigger; body: upper/lower receiver, barrel, flash hider, handguard, stock, carry handle, red dot |
 | hk-mp7-a1 | hk mp7.blend | 3.6 | MP7 30rnd mag full + empty, 4.6x30 round, bolt carrier, bolt release, charging handle, selector, trigger; body: receiver, 7in barrel, flash hider, suppressor, folding foregrip, sights, stock |
 | desert-eagle-xix | desert eagle.blend | 3.6 | 7rnd mag full + empty, .50AE round, spent case, slide, slide release, hammer, safety, trigger; body: frame, barrel |
@@ -25,3 +25,8 @@ polymer, brass, copper, polycarbonate), to be baked to one small palette texture
 Archetype map (DESIGN.md §1): pistol = Desert Eagle; SMG = MP7; rifle = M5 / G36; shotgun (semi-auto) =
 Benelli M4. Still wanted: pump shotgun, double-barrel, revolver (the author has a CC-BY Colt Python with
 speedloader), launcher, plasma, chainsaw, fists.
+
+## The .glb is the working source
+Sketchfab's converted `.glb` keeps every object as a named node with its transform and the licence in its
+metadata, and needs no Blender: `glb2obj.py` (kept outside the repo) writes one OBJ per object. The `.blend`
+is the author's original and stays here as such. For the other six meshes: download the `.glb`.

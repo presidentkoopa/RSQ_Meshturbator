@@ -1,19 +1,34 @@
 # HANDOFF — RSQ_Meshturbator
 
 ## Done (measured)
-- Nothing built yet. The rig (`rig/`) is the RS_ModelSwapper rig of 2026-11-09, engine unchanged; its
-  `setup.sh` / `rig.py check` pass here (see the commit that says so).
+- **The part system runs and draws** (rig only, not headset-confirmed; 2026-11-09 04:50). On doom2 + the pack,
+  zero script errors. The M5 (D_U's mesh, converted from the Sketchfab .glb) is drawn at the gun controller
+  with magazine, bolt and charging handle as separate parts. The magazine cycle ran end to end, driven by
+  posed controllers, and the frames show it (`rig/mt_test.py mag`): grab in the well -> pulled out, in the
+  hand -> let go, falls to the floor as a world object -> fresh one from the pouch (hand at the hip) ->
+  caught by the well -> pushed home, seated. Log: `MT t121 grabbed mag ... t150 out, in the hand ... t162
+  dropped (30 rounds) ... t212 fresh magazine from the pouch ... t225 caught by the well at 12.0 cm ... t254
+  seated (30 rounds)`.
+- **Mesh pipeline without Blender**: Sketchfab's converted `.glb` carries every object as a named node with
+  its transform; `glb2obj.py` (NOT in the repo: tools stay out) writes one OBJ per object in GZDoom OBJ space
+  (x forward, y up, z right; the loader negates z — `models_obj.cpp RealignVector`). Scale is read off the
+  mesh: D_U's 5.56x45 case is 0.447 units = 44.7 mm real, so 1 unit = 10 cm; the barrel object is 26.9 cm
+  for a 10.3in barrel. Origin = the grip's bounding-box centre. MTARCH m5 numbers are the parts' bounding
+  boxes in that frame (listed in the lump).
+- The licence is in the .glb's own metadata: `author D_U (https://sketchfab.com/DU1701)`, `CC-BY-4.0`.
 
 ## Not done
-- Everything in `DESIGN.md`. First deliverable: the true pistol (DESIGN.md, last section).
-- Blender → MD3 export of the sources in `assets/src/`. Blender is not in this workspace (no apt package,
-  no bpy wheel for Python 3.13); the export is the owner's step or a Blender install here.
+- The charging handle pull / bolt lock / fire / eject paths: code written, ran without error in the `load`
+  run, NOT yet driven or shown in frames.
+- The gun's placement in the hand (grip at the controller is a bounding-box centre, not a fit), the well's
+  tilt, the hold point of a carried mag: all awaiting the fitting mode (DESIGN.md §5), which does not exist.
+- A hand mesh: the off hand is a pink box.
+- The six other D_U meshes: `.glb` downloads needed (the `.blend` sources are useless without Blender).
+- Quest performance: the M5 body alone is 16k triangles on one HUD layer.
 
 ## Open
-- Licence: the Colt M5 is CC Attribution by D_U (owner read the page, 03:53). The other six pages still to
-  be read; assumed the same author and licence until then.
-- Triangle budget: the M5 is 24.6k tris, above the 3-8k asked for. Judge on the rig / headset, then decide
-  on a decimate pass.
-- Fitting mode (DESIGN.md §5): how the hand marks a joint's two ends in the engine and how the numbers get
-  into the data lump without a tool.
-- The ammo gate (DESIGN.md §3) against mods that reload via inventory tokens, and dual-ammo weapons.
+- `IsHUDModelForPlayerAvailable` / the 3 a.m. "layer not drawn" observations: with the real mesh and the camera
+  actually pointed at the hands, every layer draws. The earlier non-draws were my placeholder boxes written
+  in MD3 axes (x fwd, y left, z up) where GZDoom OBJ wants (x fwd, y up, z right), and a head pose looking
+  away. No engine rule involved; 11_HUD_MODELS.md stands as written.
+- Known rig limit (from ModelSwapper): a posed controller's ROLL does not reach ZScript.

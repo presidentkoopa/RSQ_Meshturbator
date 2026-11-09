@@ -1,0 +1,9 @@
+version "4.14"
+// RSQ_Meshturbator -- the part system (zscript/mt) and the weapons that use it (zscript/<gun>)
+#include "zscript/mt/vr.zs"
+#include "zscript/mt/arch.zs"
+#include "zscript/mt/gun.zs"
+#include "zscript/mt/layers.zs"
+#include "zscript/mt/world.zs"
+#include "zscript/mt/handler.zs"
+#include "zscript/m5/m5.zs"

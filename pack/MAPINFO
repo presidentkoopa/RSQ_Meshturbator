@@ -1,0 +1,4 @@
+GameInfo
+{
+	AddEventHandlers = "MT_Handler", "MT_ArchDB"
+}

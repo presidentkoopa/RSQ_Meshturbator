@@ -1,0 +1,24 @@
+# RSQ_Meshturbator archetypes. Numbers are cm in the gun frame (F L U: forward / left / up from the weapon
+# controller). Sources are named per archetype; every number is read off a mesh or measured on the rig.
+# See zscript/mt/arch.zs for the grammar.
+
+# ---- m5: D_U's low-poly Colt M5 SCW (assets/ASSETS.md), models/mt/m5 ----
+# Scale: the mesh's 5.56x45 case is 0.447 units long and a real one is 44.7 mm, so 1 unit = 10 cm (the round
+# is 0.574 = 57.4 mm OAL, the 10.3in barrel object 26.9 cm: both agree). Gun frame origin = the grip's bounding-box
+# centre (glb2obj --origin). Part bounding boxes in that frame (F L U cm), from the converted OBJs:
+#   body    -17.4..46.7  -3.8..2.4  -5.1..16.6       bolt     0.4..18.8  -1.3..1.3   8.7..12.3
+#   mag     10.4..18.0   -1.6..1.6  -9.5..9.6        handle  -1.1..16.8  -3.5..3.2  11.4..12.9
+# Not yet measured in VR (the fitting mode does not exist): the well's exact tilt (straight down assumed), the
+# handle's travel (9 cm, an AR-15's), the hold point in the hand, the eject direction.
+archetype m5
+  sprite MTP1
+  capacity 30
+  reserve Clip
+  part body   frame A  fixed
+  part mag    frame B  slide axis 0 0 -1 travel 15 grab 14.5 0 -7 radius 7 hold 4 0 -6 detent empty F
+  part handle frame C  slide axis -1 0 0 travel 9 grab -0.5 0 12.2 radius 6 spring
+  part bolt   frame D  follow handle lock
+  part case   frame E  free
+  point muzzle 46.7 0 10
+  point eject  13 -2.7 9  dir 0.2 -1 0.5
+  point pouch hip
