@@ -63,3 +63,16 @@ a round, fire with the mag out works once, a live round ejects on a rack — jud
 headset before a second archetype exists. If the pistol is true, the rifle is the pistol with a longer well
 and a charging handle; the revolver and shotguns are the hinge and the free shell, which the pistol already
 needs for its ejected round. The Colt M5 (rifle) is already in `assets/src/` and follows.
+
+## Three layers, each usable without the one above (owner, 2026-11-09 04:08)
+The owner wants to come back and spin out dedicated, BD22-quality weapon sets from these meshes later. So:
+1. **The mesh library** — an archetype's OBJ parts, colour PNGs and its measured data lump (joints, muzzle,
+   eject, grab points). A mesh's numbers belong to the mesh, measured once; they travel with its folder.
+2. **The part system** — parts, joints, hands, mechanical state, dropped parts, haptics and sounds. It
+   knows nothing about any mod: it takes an archetype lump and a weapon to ride on. A dedicated set's own
+   weapon classes call it directly.
+3. **The attach** — the `Ammo1` gate and the class -> archetype table. Thin, and the only
+   Meshturbator-specific piece. A dedicated set leaves it out and writes its own fire / damage / ballistics.
+
+**The rule that keeps this true: the part system never reads a mod's weapon state and never writes ammo.
+Only the attach does.** A dedicated set = layer 1 + layer 2 + its own weapon code.
