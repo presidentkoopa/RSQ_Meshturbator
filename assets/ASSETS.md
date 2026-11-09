@@ -1,11 +1,16 @@
 # assets/src — mesh sources, as downloaded
 
-All seven from the same Sketchfab author (owner, 2026-11-09): `low-poly-colt-m5-scw` is
-https://sketchfab.com/3d-models/low-poly-colt-m5-scw-dd2582bed94348e39c377438cc9396bc . The author appears to
-be `notcplkerry` (the object naming — `55645 ar15 30rnd mag (pmag)` — matches their "Low-Poly AR-15 magazines";
-their models seen so far are CC Attribution). **Licence to be confirmed on each model page and recorded here
-before anything ships.** No textures in any of them except the G36 and MP7 (two/one JPEGs); the rest are
-material colours (steel, polymer, brass, copper, polycarbonate).
+All seven from the same Sketchfab author (owner, 2026-11-09): **D_U**, https://sketchfab.com/D_U .
+`low-poly-colt-m5-scw` is https://sketchfab.com/3d-models/low-poly-colt-m5-scw-dd2582bed94348e39c377438cc9396bc —
+**Licence: CC Attribution** (read off the model page by the owner, 2026-11-09 03:53; 24.6k triangles, 12.2k
+vertices, published 2026-08). Attribution to ship with the pack: "Weapon meshes by D_U (sketchfab.com/D_U),
+CC BY 4.0". The other six are the same author; their pages still to be read for licence and counts.
+
+24.6k triangles is above the 3-8k this project asked for (Quest draws every part as its own HUD model). To
+be judged on the rig and in the headset before deciding on a decimate pass in Blender.
+
+No textures in any of them except the G36 and MP7 (two/one JPEGs); the rest are material colours (steel,
+polymer, brass, copper, polycarbonate), to be baked to one small palette texture at export.
 
 | folder | source | Blender | reload parts (separate, named) |
 |---|---|---|---|
