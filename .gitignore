@@ -1,0 +1,7 @@
+# made at run time by rig/
+rig/runs/
+rig/build/
+rig/bin/saves/
+rig/bin/libGLESv3.so
+__pycache__/
+*.pyc
